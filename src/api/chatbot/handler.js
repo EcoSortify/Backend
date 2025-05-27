@@ -50,13 +50,13 @@ class ChatbotHandler {
             }).code(401);
         }
 
-        if (!uid) {
+        if (!uid || !request.payload) {
             return h.response({
                 status: 'fail',
                 message: 'Missing id',
             }).code(401);
         }
-        if (!chat) {
+        if (!chat || !request.payload) {
             return h.response({
                 status: 'fail',
                 message: 'Missing chat',
