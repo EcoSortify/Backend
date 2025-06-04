@@ -31,15 +31,22 @@ async function checkToken(token) {
 async function getChatHistory(uid) {
     const ref = db.ref(`chatbot/${uid}`);
     const snapshot = await ref.once('value');
-    const chat = snapshot.val();
+    const chat = snapshot.val() || [];
 
-    return chat
+    return chat;
 }
 
 async function saveChatHistory(uid, chat) {
+    const oldChatData = await getChatHistory(uid);
+    const oldChatArray = oldChatData?.chat ?? [];
+    const lastFour = oldChatArray.slice(-4);
+
+
+    const updatedChat = [...lastFour, ...chat];
+
     const ref = db.ref(`chatbot/${uid}`);
-    await ref.set(chat); 
+    await ref.set({ chat: updatedChat });
 }
 
 
-module.exports = { loginUser, checkToken, getChatHistory, saveChatHistory}
+module.exports = { loginUser, checkToken, getChatHistory, saveChatHistory }

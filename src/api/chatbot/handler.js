@@ -67,29 +67,11 @@ class ChatbotHandler {
 
         try {
             await checkToken(token);
-            /*
-
-            DISINI FETCH GENERATIVE AI
-
-            */
-            const chatToStore = {
-                msg1: {
-                    sender: "user",
-                    time: Date.now(),
-                    chat: chat
-                },
-                msg2: {
-                    sender: "Ecosortify",
-                    time: Date.now(),
-                    chat: "Anggap ini balasan dari ai"
-                }
-            }
-            await saveChatHistory(uid, chatToStore);
+            await saveChatHistory(uid, chat);
 
             return h.response({
                 status: "success",
                 message: "Chat berhasil di simpan",
-                data: chatToStore
             });
         } catch (err) {
             return h.response({

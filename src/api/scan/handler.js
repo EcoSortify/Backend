@@ -1,11 +1,11 @@
 const { checkToken } = require('../../model/firebase');
-const FormData = require('form-data');
-const axios = require('axios');
+// const FormData = require('form-data');
+// const axios = require('axios');
 class ScanHandler {
 
     postScan = async (request, h) => {
         const authHeader = request.headers.authorization;
-        const { file } = request.payload;
+        const file = request.payload?.photo;
 
         if (!authHeader || !authHeader.startsWith('Bearer ')) {
             return h.response({
@@ -18,7 +18,7 @@ class ScanHandler {
             return h.response({
                 status: 'fail',
                 message: 'Missing image',
-            }).code(401);
+            }).code(400);
         }
 
         const token = authHeader.replace('Bearer ', '');
@@ -26,38 +26,15 @@ class ScanHandler {
         try {
             await checkToken(token);
 
-
-            const filename = file.hapi.filename;
             const contentType = file.hapi.headers['content-type'];
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/jpg', 'image/heic', 'image/heif', 'image/avif'];
 
-            const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
             if (!allowedTypes.includes(contentType)) {
-                return h.response({ status: 'fail', message: 'Tipe gambar tidak didukung' }).code(400);
+                return h.response({
+                    status: 'fail',
+                    message: 'Tipe gambar tidak didukung'
+                }).code(400);
             }
-
-
-            const form = new FormData();
-            form.append('file', file, {
-                filename,
-                contentType
-            });
-
-
-
-            /*
-            DISINI FETCH GENERATIVE AI
-            const response = await axios.post('(url Model)', form, {
-                headers: {
-                    ...form.getHeaders(),
-                    Authorization: `Bearer ${token}` 
-                },
-                responseType: 'text', 
-            });
-
-            const resultText = response.data;
-            */
-
-
 
             return h.response({
                 status: "success",
@@ -70,9 +47,10 @@ class ScanHandler {
             return h.response({
                 status: 'error',
                 message: err.message
-            }).code(401)
+            }).code(401);
         }
     }
+
 
 
 }
