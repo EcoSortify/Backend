@@ -16,6 +16,7 @@
   "dependencies": {
     "@google-cloud/secret-manager": "^6.0.1",
     "@hapi/hapi": "^21.4.0",
+    "@tensorflow/tfjs-node": "^4.22.0",
     "axios": "^1.9.0",
     "cookie": "^1.0.2",
     "firebase-admin": "^13.4.0",
