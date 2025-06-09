@@ -43,13 +43,16 @@ class ScanHandler {
             const classResult = tfjs.argMax(prediction, 1).dataSync()[0];
 
             const classes = ['Anorganik', 'Elektronik', 'Organik', 'Residu-B3'];
-            const label = classes[classResult];
+            const predictionArray = prediction.dataSync();
+            const confidenceScore = predictionArray[classResult];
+
+            const label = confidenceScore > 0.60 ? classes[classResult] : "Non-Sampah";
 
             return h.response({
                 status: "success",
                 message: "Berhasil memproses gambar",
                 data: {
-                    response: label
+                    response: label,
                 }
             });
         } catch (err) {
