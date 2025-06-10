@@ -44,7 +44,7 @@ https://ecosortify-backend-838338694702.asia-southeast2.run.app
         "status": "success",
         "message": "Berhasil memproses gambar",
         "data": {
-            "response": "anggap ini balasan model"
+            "response": "Organik"
         }
      }
      ```
@@ -60,18 +60,29 @@ https://ecosortify-backend-838338694702.asia-southeast2.run.app
      {
         "status": "success",
         "data": {
-            "msg1": {
-                "chat": "anggap ini adalah sebuah chat dari user",
-                "sender": "user",
-                "time": 1748381512978
-            },
-            "msg2": {
-                "chat": "Anggap ini balasan dari ai",
-                "sender": "Ecosortify",
-                "time": 1748381512978
-            }
-        }
-     }
+            "chat": [
+                     {
+                          "content": "Bagusnya diapakan sampah itu?",
+                          "createdAt": "2025-06-09T09:55:03.228Z",
+                          "parts": [
+                              {
+                           "text": "Bagusnya diapakan sampah itu?",
+                           "type" :"text"
+                             }
+                          ],
+                          "role": "user"
+                     },
+                    {
+                      "id": "msg-XoVNYSmRVVGBlw8JO4ATFrf4",
+                      "content": "Karena biasanya sampah residu ini susah diolah, sebaiknya di tempatkan di TPS (Tempat Penampungan Sementara), selanjutnya dibawa ke TPA (tempat sampah akhir) untuk dibuang dan diolah oleh petugas di sana.",
+                      "createdAt": "2025-06-09T09:55:05.489Z",
+                      "parts": [0, 1],
+                      "revisionId": "fGvs2HnOcLDhxLCj",
+                      "role": "assistant"
+                  }
+                                ]
+                          }
+                       }
      ```
 ## 📧 Kirim chat ke chatbot
 * URL
@@ -87,17 +98,5 @@ https://ecosortify-backend-838338694702.asia-southeast2.run.app
       {
         "status": "success",
         "message": "Chat berhasil di simpan",
-        "data": {
-            "msg1": {
-                "sender": "user",
-                "time": 1748381512978,
-                "chat": "anggap ini adalah sebuah chat dari user"
-            },
-            "msg2": {
-                "sender": "Ecosortify",
-                "time": 1748381512978,
-                "chat": "Anggap ini balasan dari ai"
-            }
-        }
      }
      ```
