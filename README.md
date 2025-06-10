@@ -73,7 +73,7 @@ https://ecosortify-backend-838338694702.asia-southeast2.run.app
                           "role": "user"
                      },
                     {
-                      "id": "msg-XoVNYSmRVVGBlw8JO4ATFrf4",
+                      "id": "msg-XoVNYSmRVVGBlw8........",
                       "content": "Karena biasanya sampah residu ini susah diolah, sebaiknya di tempatkan di TPS (Tempat Penampungan Sementara), selanjutnya dibawa ke TPA (tempat sampah akhir) untuk dibuang dan diolah oleh petugas di sana.",
                       "createdAt": "2025-06-09T09:55:05.489Z",
                       "parts": [0, 1],
