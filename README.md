@@ -108,8 +108,6 @@ Base URL: https://ecosortify-backend-838338694702.asia-southeast2.run.app
 
 ## 📷 Scan Gambar
 
-<<<<<<< HEAD
-
 - URL
   - `/scan`
 - Method
@@ -186,3 +184,76 @@ Base URL: https://ecosortify-backend-838338694702.asia-southeast2.run.app
        "message": "Chat berhasil di simpan",
     }
   ```
+=======
+* URL
+    * `/scan`
+* Method
+   * POST
+* Headers
+    * `Content-Type`: `multipart/form-data`
+    * `Authorization`: `Bearer <token>`
+* Request Body
+   * `photo` as `file` max size 10mb
+* Response
+   * ```
+     {
+        "status": "success",
+        "message": "Berhasil memproses gambar",
+        "data": {
+            "response": "Organik"
+        }
+     }
+     ```
+## 📰 Get All Riwayat Chat
+* URL
+    * `/chatbot/:uid`
+* Method
+   * GET
+* Headers
+    * `Authorization`: `Bearer <token>`
+* Response
+   * ```
+     {
+        "status": "success",
+        "data": {
+            "chat": [
+                     {
+                          "content": "Bagusnya diapakan sampah itu?",
+                          "createdAt": "2025-06-09T09:55:03.228Z",
+                          "parts": [
+                              {
+                           "text": "Bagusnya diapakan sampah itu?",
+                           "type" :"text"
+                             }
+                          ],
+                          "role": "user"
+                     },
+                    {
+                      "id": "msg-XoVNYSmRVVGBlw8........",
+                      "content": "Karena biasanya sampah residu ini susah diolah, sebaiknya di tempatkan di TPS (Tempat Penampungan Sementara), selanjutnya dibawa ke TPA (tempat sampah akhir) untuk dibuang dan diolah oleh petugas di sana.",
+                      "createdAt": "2025-06-09T09:55:05.489Z",
+                      "parts": [0, 1],
+                      "revisionId": "fGvs2HnOcLDhxLCj",
+                      "role": "assistant"
+                  }
+                                ]
+                          }
+                       }
+     ```
+## 📧 Kirim chat ke chatbot
+* URL
+    * `/chatbot/:uid`
+* Method
+   * POST
+* Headers
+    * `Authorization`: `Bearer <token>`
+* Request Body
+   * `chat` as `string`
+* Response
+   * ```
+      {
+        "status": "success",
+        "message": "Chat berhasil di simpan",
+     }
+     ```
+
