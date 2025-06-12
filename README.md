@@ -108,6 +108,8 @@ Base URL: https://ecosortify-backend-838338694702.asia-southeast2.run.app
 
 ## 📷 Scan Gambar
 
+<<<<<<< HEAD
+
 - URL
   - `/scan`
 - Method
@@ -183,4 +185,4 @@ Base URL: https://ecosortify-backend-838338694702.asia-southeast2.run.app
        "status": "success",
        "message": "Chat berhasil di simpan",
     }
-    ```
+  ```
